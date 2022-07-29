@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.20)
+project(Server)
+
+set(CMAKE_CXX_STANDARD 23)
+set (BOOST_ROOT "C:/boost")
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME ON)
+find_package(Boost COMPONENTS thread filesystem system REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+add_executable(${PROJECT_NAME} main.cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE wsock32 ${Boost_FILESYSTEM_LIBRARY} ws2_32 Boost::thread ${Boost_LIBRARIES})
